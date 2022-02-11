@@ -36,6 +36,10 @@ io.on('connection', (socket) => {
            user.name = name
     })
 
+    socket.on('client-typing', () => {
+        socket.emit('user-typing', usersState.get(socket))
+    })
+
     socket.on('message-sent', message => {
         console.log(message)
 
